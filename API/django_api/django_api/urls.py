@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path,include
 from user.views import UserProfileViewSet,CustomUserViewSet
 from test_app.views import SimpleViewset
+from event_controller.views import EventMainView,EventAttenderView
 from gate_way.views import LoginView, RegisterView,RefreshView,TestException
 from rest_framework.routers import DefaultRouter
 from django.conf import settings
@@ -29,6 +30,8 @@ router = DefaultRouter()
 router.register("simple",SimpleViewset)
 router.register("profile",UserProfileViewSet)
 router.register("user",CustomUserViewSet)
+router.register("event",EventMainView)
+router.register("event-attender", EventAttenderView)
 
 
 urlpatterns = [

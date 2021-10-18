@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_seed',
     'user',
     'gate_way',
+    'event_controller',
 
 ]
 
