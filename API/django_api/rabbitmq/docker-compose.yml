@@ -1,0 +1,14 @@
+version: "3"
+services:
+  rabbitmq:
+    container_name: 'rabbitmq'
+    image: rabbitmq:latest
+    environment:
+      - RABBITMQ_DEFAULT_USER=harshacr
+      - RABBITMQ_DEFAULT_PASS=Hcr@00078722140381
+    ports:
+      - 5672:5672
+    restart: unless-stopped
+
+
+
