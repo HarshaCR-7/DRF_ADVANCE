@@ -34,15 +34,16 @@ router.register("event",EventMainView)
 router.register("event-attender", EventAttenderView)
 
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",include(router.urls)),
-    path("login",LoginView.as_view()),
-    path("register",RegisterView.as_view()),
-    path("refresh",RefreshView.as_view()),
-    path("test",TestException.as_view())
-    
-] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+    path("login/",LoginView.as_view()),
+    path("register/",RegisterView.as_view()),
+    path("refresh/",RefreshView.as_view()),
+    path("test/",TestException.as_view())
+    ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
