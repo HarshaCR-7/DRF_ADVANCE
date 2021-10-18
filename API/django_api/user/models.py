@@ -22,11 +22,6 @@ class CustomUserManager(BaseUserManager):
       raise ValueError("superuser must have is_superuser=True.")
     return self._create_user(email,password,**extra_fields)
     
-    
-
-
-
-
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
   email = models.EmailField(unique=True)
@@ -41,3 +36,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
   
   def __str__(self):
     return self.email
+  
+
+ 
+ 
+class UserProfile(models.Model):
+  user = models.OneToOneField(CustomUser,related_name="user_profile",on_delete=models.CASCADE)
+  profile_picture = models.ImageField(upload_to="profile_pics")
+  dob = models.DateField()
+  def __str__(self):
+    return self.user.email

@@ -17,14 +17,18 @@ import debug_toolbar
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path,include
+from user.views import UserProfileViewSet,CustomUserViewSet
 from test_app.views import SimpleViewset
-from gate_way.views import LoginView, RegisterView,RefreshView,GetSecureInfo
+from gate_way.views import LoginView, RegisterView,RefreshView,TestException
 from rest_framework.routers import DefaultRouter
 from django.conf import settings
+from django.conf.urls.static import static
 
 
 router = DefaultRouter()
-router.register("Simple",SimpleViewset)
+router.register("simple",SimpleViewset)
+router.register("profile",UserProfileViewSet)
+router.register("user",CustomUserViewSet)
 
 
 urlpatterns = [
@@ -33,9 +37,9 @@ urlpatterns = [
     path("login",LoginView.as_view()),
     path("register",RegisterView.as_view()),
     path("refresh",RefreshView.as_view()),
-    path("secure",GetSecureInfo.as_view())
+    path("test",TestException.as_view())
     
-]
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar

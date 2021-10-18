@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from django.conf import settings
 import jwt
+from rest_framework.response import Response
 from rest_framework.authentication import BaseAuthentication
 from user.models import CustomUser
 
@@ -39,3 +40,4 @@ class Authentication(BaseAuthentication):
     if datetime.now().timestamp() > exp:
       return None
     return decoded_data
+  
